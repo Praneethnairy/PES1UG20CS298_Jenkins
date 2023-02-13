@@ -3,17 +3,20 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                echo 'build'
+                sh 'exit 0'
             }
         }
         stage('Test') { 
             steps {
-                currentBuild.result = 'FAILURE' 
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    echo "Pipeline Failure"
+                    sh "exit 1"
+                }
             }
         }
         stage('Deploy') { 
             steps {
-                echo 'deploy' 
+                sh 'exit 0' 
             }
         }
     }
