@@ -8,11 +8,10 @@ pipeline {
         }
         stage('Test') { 
             steps {
-                // catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                //     echo "Pipeline Failure"
-                //     sh "exit 1"
-                // }
-                sh "exit 0"
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    echo "Pipeline Failure"
+                    sh "exit 1"
+                }
             }
         }
         stage('Deploy') { 
