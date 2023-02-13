@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Test') { 
             steps {
-                echo 'test' 
+                currentBuild.result = 'FAILURE' 
             }
         }
         stage('Deploy') { 
