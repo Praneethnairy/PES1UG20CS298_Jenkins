@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Deploy') { 
             steps {
-                sh 'exit 0' 
+                error 'Pipeline Failed' 
             }
         }
     }
