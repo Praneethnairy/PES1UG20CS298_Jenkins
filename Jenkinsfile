@@ -8,10 +8,7 @@ pipeline {
         }
         stage('Test') { 
             steps {
-                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    echo "Pipeline Failure"
-                    sh "exit 1"
-                }
+                error 'Pipeline Failed'
             }
         }
         stage('Deploy') { 
@@ -21,6 +18,9 @@ pipeline {
         }
     }
     post{
+        success{
+            echo 'Pipeline Success'
+        }
     	failure{
     		echo 'Pipeline Failed'
     	}
