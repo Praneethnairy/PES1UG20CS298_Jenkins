@@ -3,17 +3,17 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                sh 'exit 0'
+                sh 'g++ -o output 1.cpp'
             }
         }
         stage('Test') { 
             steps {
-                sh 'exit 0'
+                sh 'cat 1.cpp'
             }
         }
         stage('Deploy') { 
             steps {
-                //sh 'exit 0'
+                //sh './output'
                 error 'Pipeline Failed' 
             }
         }
